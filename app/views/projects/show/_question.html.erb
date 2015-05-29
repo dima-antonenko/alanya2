@@ -1,0 +1,24 @@
+<h4>Задайте свой вопрос</h4>
+<%= form_for ([@project, @project.questions.build]) do |f| %>
+    <div class="form-group">
+        <label>Имя</label>
+        <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <%= f.text_field :email, class: "form-control" %>
+    </div>
+    <div class="form-group">
+        <label>Телефон</label>
+        <%= f.text_field :phone, class: "form-control" %>
+    </div>
+    <div class="form-group">
+        <label>Skype</label>
+        <%= f.text_field :skype, class: "form-control" %>
+    </div>
+    <div class="form-group">
+        <label>Сообщение</label>
+        <%= f.text_area :message, class: "form-control" %>
+    </div>
+     <%= f.submit("Задать вопрос")  %>
+<% end %>

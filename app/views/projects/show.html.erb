@@ -1,0 +1,42 @@
+<style type="text/css">
+    .people_class{
+        width:  128px;
+        height: 140px;
+    }
+    .booking-list > li{
+        margin-bottom: 10px
+    }
+</style>
+
+
+            <%= render '/projects/show/breadcums' %>
+            <%= render '/projects/show/notice' %>
+            <div class="booking-item-details">
+                <%= render '/projects/show/header' %>
+                <div class="row">
+                <%= render '/projects/show/images' %>   
+                    
+                <%= render '/projects/show/params' %>      
+                </div>
+                 <div class="row">
+
+                <%= render '/projects/show/buttons_before_images' %>    
+                   
+                    <div class="col-md-7">
+                    <%= render '/projects/show/description' %>    
+                        <hr/>
+                            
+                 <%= render '/projects/show/print_send' %>             
+
+                            
+                        <hr/>
+                        
+                <%= render '/projects/show/question' %>    
+                    </div>
+                    
+                     <%= render '/projects/show/additional_features' %> 
+                     
+                   <%= render '/projects/show/credit' %> 
+                    <%= render '/projects/show/manager_list' %>  
+              </div>
+        </div>

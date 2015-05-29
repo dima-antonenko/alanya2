@@ -1,0 +1,2 @@
+module ProjectApplicationMailsHelper
+end

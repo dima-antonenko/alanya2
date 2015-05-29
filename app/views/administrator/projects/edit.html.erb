@@ -1,0 +1,461 @@
+<style type="text/css">
+	.tab-content .form-group{
+		padding-bottom: 50px;
+	}
+	.no_padding_bottom{
+		padding-bottom: 0px !important;
+	}
+	.all_images_string{
+		margin: 20px 0;
+	}
+	.buttons_actions ul li {
+		display: inline-block;
+		float: right;
+		padding-left: 10px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+	td img {
+		width: 82px !important;
+		height: 61px !important;
+		margin: 0px auto;
+	}
+</style>
+
+<div class="page-content-wrapper">
+	<div class="page-content">
+		<div class="row">
+			<div class="col-md-12">
+				<% if flash[:notice] %>
+					<div id="prefix_262686894761" class="Metronic-alerts alert alert-success fade in"><button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button><%= flash[:notice] %></div>
+				<% end %>
+				<%= form_for([:administrator, @project], :multipart => true ) do |f| %>
+				<div class="portlet light">
+					<div class="portlet-title">
+						<div class="caption">
+							<span class="caption-subject blue-hoki bold uppercase">
+							<%= @project.name %> </span>
+							<span class="caption-helper">Режим редактирования</span>
+						</div>
+						<div class="actions btn-set">
+							<a href="/administrator/projects" class="btn btn-default btn-circle"> Назад </a>
+							<%= f.submit(class: "btn blue-hoki btn-circle", value: "Обновить") %>
+						</div>
+					</div>
+					<div class="portlet-body">
+						<div class="tabbable">
+							<ul class="nav nav-tabs">
+								<li class="active">
+									<a href="#tab_general" data-toggle="tab">
+									Главная</a>
+								</li>
+								<li>
+									<a href="#tab_description" data-toggle="tab">
+									Описание </a>
+								</li>
+								<li>
+									<a href="#tab_images" data-toggle="tab">
+									Изображения </a>
+								</li>
+								<li>
+									<a href="#tab_managers" data-toggle="tab">
+									Менеджеры</a>
+								</li>
+								<li>
+									<a href="#tab_seo" data-toggle="tab">
+										SEO
+									</a>
+								</li>
+							</ul>
+							<div class="tab-content no-space">
+								<div class="tab-pane active" id="tab_general">
+									<div class="form-body">
+										<div class="row">
+											<div class="col-md-6 col-sm-12">
+												<div class="portlet blue-hoki box">
+													<div class="portlet-title">
+														<div class="caption">
+															Основная информация
+														</div>
+													</div>
+													<div class="portlet-body">
+														<div class="row static-info">
+															<div class="col-md-5 name">
+																Название
+															</div>
+															<div class="col-md-7 value">
+																<%= f.text_field :name, class: "form-control" %>
+															</div>
+														</div>
+														<div class="row static-info">
+															<div class="col-md-5 name">
+																Артикул
+															</div>
+															<div class="col-md-7 value">
+																<%= f.text_field :sku, class: "form-control" %>
+															</div>
+														</div>
+														<div class="row static-info">
+															<div class="col-md-5 name">
+																Начальная цена
+															</div>
+															<div class="col-md-7 value">
+																<%= f.text_field :start_price, class: "form-control" %>
+															</div>
+														</div>
+														<div class="row static-info">
+															<div class="col-md-5 name">
+																Окончательная цена
+															</div>
+															<div class="col-md-7 value">
+																<%= f.text_field :final_price, class: "form-control" %>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6 col-sm-12">
+												<div class="portlet blue-hoki box">
+													<div class="portlet-title">
+														<div class="caption">
+															Подробности
+														</div>
+													</div>
+													<div class="portlet-body">
+														<div class="row static-info">
+															<div class="col-md-5 name">
+																Вид сделки
+															</div>
+															<div class="col-md-7 value">
+																<%= f.select(:type_deal, options_for_select([['Не выбрано', 'none'] ,['Продажа', 'sale'],['Аренда', 'rent']]), {},{class: "btn"}) %>
+															</div>
+														</div>
+														<div class="row static-info">
+															<div class="col-md-5 name">
+																Тип объекта
+															</div>
+															<div class="col-md-7 value">
+																<%= f.select(:type_object, options_for_select([['Не выбрано', 'none'] ,['Квартира', 'flat'],['Пентхаус', 'penthouse'], ['Квартира или пентхаус', 'flat_and_penthouse']]), {},{class: "btn"} ) %>
+															</div>
+														</div>
+														<div class="row static-info">
+															<div class="col-md-5 name">
+																Комнат
+															</div>
+															<div class="col-md-7 value">
+																<%= f.select(:rooms, options_for_select([['Не выбрано', 'none'] ,['1 + 0', '1 + 0'],['1 + 1', '1 + 1'], ['2 + 1', '2 + 1'], ['3 + 1', '3 + 1'], ['4 + 1', '4 + 1'], ['5 + 1', '5 + 1']]) , {},{class: "btn"}) %>
+															</div>
+														</div>
+														<div class="row static-info">
+															<div class="col-md-5 name">
+																Площадь (м2)
+															</div>
+															<div class="col-md-7 value">
+																<%= f.text_field :area, class: "form-control" %>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6 col-sm-12">
+												<div class="portlet blue-hoki box">
+													<div class="portlet-title">
+															<div class="caption">
+																Опции
+															</div>
+														</div>
+													<div class="portlet-body">
+														<div class="row static-info">
+															<div class="col-md-5 name">
+																Кондиционеры
+															</div>
+															<div class="col-md-7 value">
+																<%= f.select(:has_conditioning, options_for_select([['Не выбрано', nil] ,['Есть', 'true'], ['Нету', 'false']]), {},{class: "btn"}) %>
+															</div>
+														</div>
+														<div class="row static-info">
+															<div class="col-md-5 name">
+																Бытовая техника
+															</div>
+															<div class="col-md-7 value">
+																<%= f.select(:has_white_goods, options_for_select([['Не выбрано', 'nil'] ,['Есть', 'true'], ['Нету', 'false']]), {},{class: "btn"}) %>
+															</div>
+														</div>
+														<div class="row static-info">
+															<div class="col-md-5 name">
+																Электронагреватели
+															</div>
+															<div class="col-md-7 value">
+																<%= f.select(:has_water_heater, options_for_select([['Не выбрано', 'nil'] ,['Есть', 'true'], ['Нету', 'false']]), {},{class: "btn"}) %>
+															</div>
+														</div>
+														<div class="row static-info">
+															<div class="col-md-5 name">
+																Мебель
+															</div>
+															<div class="col-md-7 value">
+																<%= f.select(:has_furniture, options_for_select([['Не выбрано', 'nil'] ,['Есть', 'true'], ['Нету', 'false']]), {},{class: "btn"}) %>
+															</div>
+														</div>
+														<div class="row static-info">
+															<div class="col-md-5 name">
+																Оформление ТАПУ
+															</div>
+															<div class="col-md-7 value">
+																<%= f.select(:has_tapu, options_for_select([['Не выбрано', 'nil'] ,['Есть', 'true'], ['Нету', 'false']]), {},{class: "btn"}) %>
+															</div>
+														</div>
+														<div class="row static-info">
+															<div class="col-md-5 name">
+																Оформление ИСКАНА
+															</div>
+															<div class="col-md-7 value">
+																<%= f.select(:has_iskana, options_for_select([['Не выбрано', 'nil'] ,['Есть', 'true'], ['Нету', 'false']]), {},{class: "btn"}) %>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											
+											<div class="col-md-6 col-sm-12">
+												<div class="portlet blue-hoki box">
+													<div class="portlet-title">
+														<div class="caption">
+															Прочее
+															</div>
+													</div>
+													<div class="portlet-body">
+														<div class="row static-info">
+															<div class="col-md-5 name">
+																Состояние
+															</div>
+															<div class="col-md-7 value">
+																<%= f.select(:condition, options_for_select([['Не выбрано', 'none'] ,['Строящийся объект', 'under_construction'], ['Готовый объект', 'ready'], ['Вторичное жилье', 'secondary']]), {},{class: "btn"}) %>
+															</div>
+														</div>
+														<div class="row static-info">
+															<div class="col-md-5 name">
+																Район
+															</div>
+															<div class="col-md-2 value">
+																<%= f.select :project_category_id , ProjectCategory.all.collect {|category| [category.title, category.id ]},{}, {class: "btn"} %>
+															</div>
+														</div>
+														<div class="row static-info">
+															<div class="col-md-5 name">
+																До центра (км)
+															</div>
+															<div class="col-md-7 value">
+																<%= f.text_field :to_center, class: "form-control" %>
+															</div>
+														</div>
+														<div class="row static-info">
+															<div class="col-md-5 name">
+																До аэропорта (км)
+															</div>
+															<div class="col-md-7 value">
+																<%= f.text_field :to_airport, class: "form-control" %>
+															</div>
+														</div>
+														<div class="row static-info">
+															<div class="col-md-5 name">
+																Месяц и год постройки
+															</div>
+															<div class="col-md-2 value">
+																<%= f.text_field :mount_build, class: "form-control" %>
+															</div>
+															<div class="col-md-5 value">
+																<%= f.text_field :year_build, class: "form-control" %>
+															</div>
+														</div>
+														
+													</div>
+												</div>
+											</div>
+											
+										</div>
+										
+									</div>
+								</div>
+								<div class="tab-pane" id="tab_description">
+									<div class="form-body">
+										<div class="form-group">
+										</label>
+										<div class="col-md-10">
+											<%= f.cktext_area :description, class: "form-control edit" %>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane" id="tab_images">
+								<div class="form-body">
+									<div id="tab_images_uploader_container" class="text-align-reverse margin-bottom-10 buttons_actions">
+										<ul>
+											<li><%= f.file_field :avatar, class: "btn blue-hoki", id: "tab_images_uploader_pickfiles" %></li>
+										</ul>
+									</div>
+									<div class="row">
+										<div id="tab_images_uploader_filelist" class="col-md-6 col-sm-12">
+										</div>
+									</div>
+									<div class="form-group no_padding_bottom">
+										<table class="table table-bordered table-hover">
+											<thead>
+												<tr role="row" class="heading">
+													<th width="11%">
+														Аватар
+													</th>
+													<th width="88%">
+													</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>
+														<a href="#" class="fancybox-button" data-rel="fancybox-button">
+															<img class="img-responsive" src="<%= @project.avatar.mini_admin %>" alt="">
+														</a>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="form-group">
+										<div id="tab_images_uploader_container" class="text-align-reverse margin-bottom-10 buttons_actions">
+											<ul>
+												<li><%= file_field_tag  "images[]", type: :file, multiple: true, class: "btn blue-hoki", id: "tab_images_uploader_pickfiles" %></li>
+											</ul>
+											
+										</div>
+										<span class="caption-subject blue-hoki bold uppercase all_images_string">
+										Все изображения проекта </span>
+										<table class="table table-bordered table-hover">
+											<thead>
+												<tr role="row" class="heading">
+													<th width="6%">
+														Изображение
+													</th>
+													<th width="94%">
+														
+													</th>
+												</tr>
+											</thead>
+											<tbody>
+												<% @project_attachments.each do |project_attachment| %>
+												<tr>
+													<td>
+														
+														<img class="img-responsive" src="<%= project_attachment.image.mini_admin %>" alt="">
+													</td>
+													<td>
+														<%= link_to 'Удалить', project_attachment, method: :delete, data: { confirm: 'Вы уверены ?' }, class: "btn default btn-sm" %>
+													</td>
+												</tr>
+												<% end %>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane" id="tab_managers">
+								<div class="form-group">
+										<div id="tab_images_uploader_container" class="text-align-reverse margin-bottom-10 buttons_actions">
+											<ul>
+												<li><%= f.select :some_manager, Manager.all.collect {|manager| [manager.name, manager.id ]}, {},{class: "btn"} %></li>
+												<li>
+													<%= f.submit(class: "btn blue-hoki btn-circle", value: "Добавить") %>
+												</li>
+
+												
+											</ul>
+											
+										</div>
+										<table class="table table-bordered table-hover">
+											<thead>
+												<tr role="row" class="heading">
+													<th width="6%">
+														Изображение
+													</th>
+													<th width="30%">
+														Имя
+													</th>
+													<th width="30%">
+														Должность
+													</th>
+													<th width="34%">
+													</th>
+												</tr>
+											</thead>
+											<tbody>
+												<% @project.managers.each do |manager| %>
+												<tr>
+													<td>
+														<img class="img-responsive" src="<%= manager.avatar.mini_admin %>" alt="">
+													</td>
+													<td>
+														<%= manager.name %>
+													</td>
+													<td>
+														<%= manager.description %>
+													</td>
+														
+													<td>
+														<%= link_to 'Удалить', project_manager_path(@project, manager), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn default btn-sm" %>
+													</td>
+												</tr>
+												<% end %>
+											</tbody>
+										</table>
+									</div>
+							</div>
+							<div class="tab-pane" id="tab_seo">
+								<div class="form-group">
+							
+							<div class="form-group">
+													<label class="col-md-2 control-label">Title: </span>
+													</label>
+													<div class="col-md-10">
+														 <%= f.text_area :meta_title, class: "form-control" %>
+													</div>
+												</div>
+
+							<div class="form-group">
+													<label class="col-md-2 control-label">Meta description: </span>
+													</label>
+													<div class="col-md-10">
+														 <%= f.text_area :meta_description, class: "form-control" %>
+													</div>
+												</div>
+							
+							<div class="form-group">
+													<label class="col-md-2 control-label">Meta keywords: </span>
+													</label>
+													<div class="col-md-10">
+														 <%= f.text_area :meta_keywords, class: "form-control" %>
+													</div>
+												</div>
+							<div class="form-group">
+													<label class="col-md-2 control-label">Meta copyritght: </span>
+													</label>
+													<div class="col-md-10">
+														 <%= f.text_area :meta_copyright, class: "form-control" %>
+													</div>
+												</div>						
+
+												
+																	
+	</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<% end %>
+</div>
+</div>
+<!-- END PAGE CONTENT-->
+</div>
+</div>
+</div>

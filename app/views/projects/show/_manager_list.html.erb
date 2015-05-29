@@ -1,0 +1,35 @@
+<div class="col-md-5">
+                       <h4>Менеджеры</h4>
+                        <ul class="booking-list">
+                        <%  @project.managers.each do |manager| %>
+                            <li>
+                                <div class="booking-item booking-item-small">
+                                    <div class="row">
+                                        <div class="col-xs-4">
+                                            <img src="<%= manager.avatar.medium %>" alt="Image Alternative text" title="The pool" class="people_class" />
+                                        </div>
+                                        <div class="col-xs-8">
+                                            <span class="text-lg"><%= manager.name %></span>
+                                        </div>
+                                        <div class="col-xs-8">
+                                            <span class="booking-item-feature-title"><%= manager.description %></span>
+                                        </div>
+                                        <div class="col-xs-8">
+                                            <span class="booking-item-feature-title">Телефон: <%= manager.phone %></span>
+                                        </div>
+                                        <div class="col-xs-8">
+                                            <span class="booking-item-feature-title">Skype: <%= manager.skype %></span>
+                                        </div>
+                                        <div class="col-xs-8">
+                                            <span class="booking-item-feature-title">Языки: <%= manager.languages %></span>
+                                        </div>
+                                        <div class="col-xs-8">
+                                            <span class="booking-item-feature-title"><%= manager.email %></span>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </li>
+                        <% end %>    
+                        </ul>
+                    </div>

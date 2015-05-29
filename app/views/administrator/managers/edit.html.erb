@@ -1,0 +1,148 @@
+<style type="text/css">
+	.tab-content .form-group{
+		padding-bottom: 50px;
+	}
+	.no_padding_bottom{
+		padding-bottom: 0px !important;
+	}
+	.all_images_string{
+		margin: 20px 0;
+	}
+	.buttons_actions ul li {
+		display: inline-block;
+		float: right;
+		padding-left: 10px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+	td img {
+		width: 82px !important;
+		height: 61px !important;
+		margin: 0px auto;
+	}
+</style>
+<div class="page-content-wrapper">
+	<div class="page-content">
+		<div class="row">
+			<div class="col-md-12">
+				<%= form_for([:administrator, @manager], :multipart => true ) do |f| %>
+				<div class="portlet light">
+					<div class="portlet-title">
+						<div class="caption">
+							<i class="icon-basket font-green-sharp"></i>
+							<span class="caption-subject font-green-sharp bold uppercase">
+							<%= @manager.name %> </span>
+							<span class="caption-helper">Режим редактирования</span>
+						</div>
+						<div class="actions btn-set">
+							<a href="/administrator/projects" class="btn btn-default btn-circle"> Назад </a>
+							<%= f.submit(class: "btn blue-hoki btn-circle", value: "Обновить") %>
+						</div>
+					</div>
+					<div class="portlet-body">
+						<div class="tabbable">
+							<div class="tab-content no-space">
+								<div class="tab-pane active" id="tab_general">
+									<div class="form-body">
+										<div class="form-group">
+										<label class="col-md-2 control-label">Имя и фамилия: </span>
+									</label>
+									<div class="col-md-10">
+										<%= f.text_field :name, class: "form-control" %>
+									</div>
+								</div>
+								<div class="form-group">
+								<label class="col-md-2 control-label">Должность : </span>
+							</label>
+							<div class="col-md-10">
+								<%= f.text_field :description, class: "form-control" %>
+							</div>
+						</div>
+						<div class="form-group">
+						<label class="col-md-2 control-label">Skype: </span>
+						</label>
+						<div class="col-md-10">
+						<%= f.text_field :skype, class: "form-control" %>
+						</div>
+						</div>
+
+						<div class="form-group">
+						<label class="col-md-2 control-label">Email: </span>
+						</label>
+						<div class="col-md-10">
+						<%= f.text_field :email, class: "form-control" %>
+						</div>
+						</div>
+
+						<div class="form-group">
+						<label class="col-md-2 control-label">№ телефона: </span>
+						</label>
+						<div class="col-md-10">
+						<%= f.text_field :phone, class: "form-control" %>
+						</div>
+						</div>
+
+						<div class="form-group">
+						<label class="col-md-2 control-label">Языки: </span>
+						</label>
+						<div class="col-md-10">
+						<%= f.text_field :languages, class: "form-control" %>
+						</div>
+						</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+	<div class="tab-pane" id="tab_images">
+		<div class="form-body">
+			<div id="tab_images_uploader_container" class="text-align-reverse margin-bottom-10 buttons_actions">
+				<ul>
+					<li><%= f.file_field :avatar, class: "btn blue-hoki", id: "tab_images_uploader_pickfiles" %></li>
+				</ul>
+			</div>
+			<div class="row">
+				<div id="tab_images_uploader_filelist" class="col-md-6 col-sm-12">
+				</div>
+			</div>
+			<div class="form-group no_padding_bottom">
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr role="row" class="heading">
+							<th width="11%">
+								Аватар
+							</th>
+							<th width="88%">
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<a href="#" class="fancybox-button" data-rel="fancybox-button">
+									<img class="img-responsive" src="<%= @manager.avatar.mini_admin %>" alt="">
+								</a>
+							</td>
+							<td>
+								<a href="javascript:;" class="btn default btn-sm">
+								</i> Удалить </a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+</div>
+</div>
+</div>
+</div>
+</div>
+<% end %>
+</div>
+</div>
+<!-- END PAGE CONTENT-->
+</div>
+</div>
+</div>

@@ -1,0 +1,158 @@
+<div class="col-md-5">
+                       
+                        <ul class="booking-list">
+                             <li>
+                                <div class="booking-item booking-item-small">
+                                    <div class="row">
+                                        <div class="col-xs-4">
+                                            Артикул:
+                                        </div>
+                                        <div class="col-xs-5">
+                                            <%= @project.sku %>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="booking-item booking-item-small">
+                                    <div class="row">
+                                        <div class="col-xs-4">
+                                            Вид сделки:
+                                        </div>
+                                        <div class="col-xs-5">
+                                            <% if @project.type_deal == 'sale' %>
+                                                <h5 class="booking-item-title">продажа</h5>
+                                            <% elsif @project.type_deal == 'rent' %>
+                                                 <h5 class="booking-item-title">аренда</h5>
+                                            <% end %>       
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="booking-item booking-item-small">
+                                    <div class="row">
+                                        <div class="col-xs-4">
+                                            Район:
+                                        </div>
+                                        <div class="col-xs-5">
+                                            <%= @project.project_category.title %>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="booking-item booking-item-small">
+                                    <div class="row">
+                                        <div class="col-xs-4">
+                                            Тип объекта:
+                                        </div>
+                                        <div class="col-xs-5">
+                                            <% if @project.type_object == 'flat' %>
+                                                <h5 class="booking-item-title">Квартира</h5>
+                                            <% elsif @project.type_object == 'penthouse' %> 
+                                                <h5 class="booking-item-title">Пентхаус</h5>
+                                            <% elsif @project.type_object == 'flat_and_penthouse' %>
+                                                <h5 class="booking-item-title">Квартира и пентхаус</h5>
+                                            <% end %>            
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="booking-item booking-item-small">
+                                    <div class="row">
+                                        <div class="col-xs-4">
+                                            Комнат:
+                                        </div>
+                                        <div class="col-xs-5">
+                                            <h5 class="booking-item-title"><%= @project.rooms %></h5>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="booking-item booking-item-small">
+                                    <div class="row">
+                                        <div class="col-xs-4">
+                                            Площадь:
+                                        </div>
+                                        <div class="col-xs-5">
+                                            <h5 class="booking-item-title"><%= @project.area %> м2</h5>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="booking-item booking-item-small">
+                                    <div class="row">
+                                        <div class="col-xs-4">
+                                            Состояние:
+                                        </div>
+                                        <div class="col-xs-5">
+                                            <% if @project.condition == 'under_construction' %>    
+                                                <h5 class="booking-item-title">строящийся объект</h5>
+                                            <% elsif @project.condition == 'ready' %>    
+                                                <h5 class="booking-item-title">готовый объект</h5>
+                                            <% elsif @project.condition == 'secondary' %>    
+                                                <h5 class="booking-item-title">вторичное жилье</h5>
+                                            <% end %>            
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </li>
+
+                             <li>
+                                <div class="booking-item booking-item-small">
+                                    <div class="row">
+                                        <div class="col-xs-4">
+                                            до центра:
+                                        </div>
+                                        <div class="col-xs-5">
+                                            <h5 class="booking-item-title"><%= @project.to_center %> км.</h5>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="booking-item booking-item-small">
+                                    <div class="row">
+                                        <div class="col-xs-4">
+                                           до аэропорта:
+                                        </div>
+                                        <div class="col-xs-5">
+                                            <h5 class="booking-item-title"><%= @project.to_airport %> км.</h5>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="booking-item booking-item-small">
+                                    <div class="row">
+                                        <div class="col-xs-4">
+                                          год построки:
+                                        </div>
+                                        <div class="col-xs-5">
+                                            <h5 class="booking-item-title"><%= @project.mount_build %> / <%= @project.year_build %></h5>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </li>
+ 
+                        </ul>
+                    </div>
